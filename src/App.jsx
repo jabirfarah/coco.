@@ -9,8 +9,10 @@ function App() {
   
   return (
     <>
-      <Header/>
-      <Article/>
+    <div className='h-screen'>
+        <Header/>
+        <Article/>
+    </div>
     </>
   )
 }

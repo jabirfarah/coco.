@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // This gives the top stories
 // https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty
@@ -10,24 +10,41 @@ import React from 'react'
 
 
 
-const article = () => {
+const Article = () => {
+        const [hn, setHN] = useState([
 
+        ])
         const comsec = async () => {
-        try {
-            const topStoriesHN = await 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty'
-            const res = topStoriesHN.json
-            console.log(res);
-            
-            const storyHN = 'https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty'
+            const topStoriesHN = 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty'
+            const res = await fetch(topStoriesHN)
+            const json = await res.json()
+            const hnStringify = await JSON.parse(JSON.stringify(json))
 
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
+            const lst = []
+            for (let i = 0; i <= 29 ; i++) {
+                lst.push(hnStringify[i]);
+             
+                
+            }
+            //push Hacker News stories to state
+            const lstStory = []
+            for (let index = 0; index <= lst.length; index++) {
+                const storyHN = await fetch(`https://hacker-news.firebaseio.com/v0/item/${hnStringify[index]}.json?print=pretty`)
+                const storyRes = await storyHN.json()
+                lstStory.push(storyRes)
+            }
+            setHN(lstStory)
+    }       
+ comsec()
   return (
-    <div>article</div>
+    hn.map((story) => (
+        
+        <div key={1}>
+            
+            <a href={story.url}>{story.title}</a>
+            </div>
+    ))
   )
 }
 
-export default article
+export default Article
