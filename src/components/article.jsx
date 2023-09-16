@@ -35,14 +35,15 @@ const Article = () => {
             }
             setHN(lstStory)
     }       
- comsec()
+ comsec();
+ let index = 0
   return (
     hn.map((story) => (
         
-        <div key={1}>
-            
-            <a href={story.url}>{story.title}</a>
+        <div key={index + 1}>
+            <a key={index++} href={story.url} target='_blank'>{story.title}</a>
             </div>
+        
     ))
   )
 }
