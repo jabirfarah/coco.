@@ -40,42 +40,30 @@ const Article = () => {
 
 const getReadableDate = (d) => {
   const date = new Date(d * 1000)
-  const year = date.getFullYear();
-  let month = date.getMonth() + 1;
-  month = month.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
-  let day = date.getDate();
-  day = day.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
-  let hour = date.getHours()
-  hour = hour.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
-  let minutes = date.getMinutes();
-  minutes = minutes.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
 
-  const m = date.getMinutes();
+
   const currDate = new Date();
 
-  var hours = (currDate.getTime() - date.getTime()) / ( 1000 * 60 * 60);
-  var mins = (currDate.getTime() - date.getTime()) / ( 1000 * 60);
-  if  (hours < 1) {
-      hours = 0;
+  let currHours = (currDate.getTime() - date.getTime()) / ( 1000 * 60 * 60);
+  const currMinutes = (currDate.getTime() - date.getTime()) / ( 1000 * 60);
+  if  (currHours < 1) {
+      currHours = 0;
   }
 
-
-  // const h = Math.floor(seconds / 3600);
-  // const min = Math.floor(seconds / 60) % 60;
-  // seconds = Math.floor(seconds);
-
-
-    return `${hours > 0 ? `${Math.round(hours)} hours ago` : `${Math.round(mins)} minutes ago`}`;
+    return `${currHours > 0 ? `${Math.round(currHours)} hours ago` : `${Math.round(currMinutes)} minutes ago`}`;
 }
 
   return (
-
-      <ul>
+      <ul className="flex w-screen flex-col items-center">
       { hn.map((article) => (
-            <li key={article.id}>
-                <a rel="noreferrer" href={article.url} target="_blank">{article.title}</a>
-                <div className="text-orange-600">Hacker News</div>
-                <div>{getReadableDate(article.time)}</div>
+
+            <li key={article.id} className=" text-left w-[700px]">
+                <div className=" ">
+                    <div className=" ">
+                    <a rel="noreferrer" href={article.url} target="_blank">{article.title}</a>
+                    <p className="text-sm text-gray-400 pt-0.5 px-3"> <span className="text-orange-600">Hacker News</span> • {getReadableDate(article.time)}</p>
+                    </div>
+                </div>
             </li>
       ))}
       </ul>
