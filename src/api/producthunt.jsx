@@ -24,7 +24,7 @@ const ProductHunt = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + 'fIRpzn27qBDrjwSOhLUQzRhtkDbXYXXcnCd2amb9odg'
+                'Authorization': 'Bearer '
             },
             body: JSON.stringify({ query })
         })

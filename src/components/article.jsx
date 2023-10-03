@@ -62,11 +62,11 @@ const getReadableDate = (d) => {
 }
 
   return (
-    <>
   
-      <ul className="flex flex-col border-2 border-red-500">
+    <div className="">
+      <ul className="">
       { hn.map((article) => (
-            <li key={article.id} className=" text-left w-[400px]">
+            <li key={article.id} className="text-left">
                 <div className=" ">
                     
                     <a rel="noreferrer" href={article.url} target="_blank">{article.title}</a>
@@ -77,8 +77,8 @@ const getReadableDate = (d) => {
       ))  }
 
       </ul>
-
-      </>
+      </div>
+     
   )
 }
 
