@@ -65,12 +65,12 @@ const getReadableDate = (d) => {
 
   return (
   
-    <div className="flex-1 border-2  w-[90vw]">
+    <div className="border-2 w-[50vw]">
       <header className='flex items-center align-middle justify-center p-2 mb-4 border-b-2 border-red-500 text-sm text-gray-400 font-bold uppercase tracking-widest'>
         <img className="w-6 h-6 mr-2" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic-00.iconduck.com%2Fassets.00%2Fycombinator-icon-256x256-rkgflvjo.png&f=1&nofb=1&ipt=dc5b3b1790dcd6a2ef14f95fa864c5369506b38c7fdeba2171aa8c0931e9ddc8&ipo=images" alt=""></img>
         <div>Hackernews</div>
       </header>
-      <ul className="">
+      <ul className="h-[85vh] flex-grow overflow-y-auto">
       { hn.map((article) => (
             <li key={article.id} className="text-left hover:bg-gray-50">
                 <div className=" ">
