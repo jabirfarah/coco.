@@ -1,6 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 
+
 export default function AddModal() {
     let [isOpen, setIsOpen] = useState(false)
 
@@ -11,9 +12,7 @@ export default function AddModal() {
     function openModal() {
         setIsOpen(true)
     }
-    function click() {
-        console.log('clicked')
-    }
+
     return (
         <>
             <div className="inset-0 flex items-center justify-center">

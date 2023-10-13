@@ -11,9 +11,8 @@ const Article = () => {
         const [hn, setHN] = useState([]);
         const [isLoading, setIsLoading] = useState(true);
 
-
         useEffect(() => {
-        const cos = async () => {
+        const getStories = async () => {
           //Get top stories from Hacker News (only gives me ID's)
             const topStoriesHN = 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty'
             const res = await fetch(topStoriesHN);
@@ -33,7 +32,7 @@ const Article = () => {
 
             return lstStory;
     }
-        cos().then(console.log("finished!"));
+        getStories().then(console.log("finished!"));
         }, []);
 
 // const getDate = (d) => {
