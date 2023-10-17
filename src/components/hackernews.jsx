@@ -1,6 +1,6 @@
-import AddModal from "./addModal.jsx";
+import {modalContainer} from "./modalContainer.jsx";
 
-const header = () => {
+const hackernews = (addHN, addPH ) => {
   const currentDayMonthYear = new Date();
   const currentDay = currentDayMonthYear.toDateString();
 
@@ -12,14 +12,12 @@ const header = () => {
           <div className="flex gap-4 items-center">
             <div>{currentDay}</div>
               <div>
-                  {AddModal()}
+                  {modalContainer(addHN, addPH)}
               </div>
           </div>
-
-
       </nav>
     </>
   )
 }
 
-export default header;
+export default hackernews;

@@ -1,9 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 
-
 export default function AddModal() {
-    let [isOpen, setIsOpen] = useState(false)
+    let [isOpen, setIsOpen] = useState(false);
+    const [isAddedHN, setIsAddedHN] = useState(false);
+    const [isAddedPH, setIsAddedPH] = useState(false);
 
     function closeModal() {
         setIsOpen(false)
@@ -11,6 +12,15 @@ export default function AddModal() {
 
     function openModal() {
         setIsOpen(true)
+    }
+
+    const addHN = () => {
+        if  (isAddedHN === false) {
+            setIsAddedHN(true)
+        } else {
+            setIsAddedHN(false)
+        }
+        console.log(`I changed it to ${isAddedHN} `)
     }
 
     return (
@@ -67,31 +77,30 @@ export default function AddModal() {
 
                                     <ul className="mt-2">
                                         <li className="">
-                                            <a className="flex gap-2 p-4 hover:bg-gray-50" onClick={click}>
+                                            <a className="flex gap-2 p-4 hover:bg-gray-50">
                                                 <div className="border-2 rounded-lg w-10 h-10 p-[6px]">
                                                     <img className="rounded-md items-center  h-6 w-6" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic-00.iconduck.com%2Fassets.00%2Fycombinator-icon-256x256-rkgflvjo.png&f=1&nofb=1&ipt=dc5b3b1790dcd6a2ef14f95fa864c5369506b38c7fdeba2171aa8c0931e9ddc8&ipo=images" alt=""/>
                                                 </div>
                                                 <div>
                                                     <div className="text-xl">Hacker News</div>
                                                     <div className="text-sm text-gray-400">Top Stories of the day</div>
+                                                    <button onClick={addHN}>Add</button>
+
                                                 </div>
                                             </a>
                                         </li>
-                                        <li className="">
+                                        <li>
                                             <a className="flex gap-2 p-4 hover:bg-gray-50" href="#">
                                                 <div className="border-2 rounded-lg w-10 h-10 p-[6px]">
                                                 <img className="rounded-md items-center h-6 w-6" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fpopular-services-brands-vol-2%2F512%2Fproduct-hunt-1024.png&f=1&nofb=1&ipt=8ee3711ce5423811d154888c2ba24ddda3ef909c44c99427673082f1fbd99c67&ipo=images" alt=""/>
                                                 </div>
-                                                <div className="">
+                                                <div>
                                                     <div className="text-xl">Product Hunt</div>
                                                     <div className="text-sm text-gray-400">Trending new releases</div>
                                                 </div>
                                             </a>
                                         </li>
-
                                     </ul>
-
-
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>

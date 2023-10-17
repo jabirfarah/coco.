@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react'
 const Article = () => {
         const [hn, setHN] = useState([]);
         const [isLoading, setIsLoading] = useState(true);
-
+        const [isAdded, setIsAdded] = useState(false);
         useEffect(() => {
         const getStories = async () => {
           //Get top stories from Hacker News (only gives me ID's)
@@ -62,6 +62,13 @@ const getReadableDate = (d) => {
     return `${currDay > 0 ? `${Math.round(currDay)}d` : currHours > 0 ? `${Math.round(currHours)}h` : `${Math.round(currMinutes)}m`}`;
 }
 
+function Add() {
+    if (isAdded === false) {
+        setIsAdded(true)
+    } else {
+        setIsAdded(false)
+    }
+}
   return (
   
     <div className="border-2 w-[50vw]">
@@ -85,5 +92,6 @@ const getReadableDate = (d) => {
      
   )
 }
+
 
 export default Article;
