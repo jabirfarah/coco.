@@ -13,7 +13,8 @@ function App() {
 
     let [addHN, setAddHN] = useState(false);
     let [addPH, setAddPH] = useState(false);
-    let [feed, setFeed] = useState([])
+    let [feed, setFeed] = useState([]);
+    let [i, setI] = useState(0);
     function toggleHNState() {
         if (addHN === false) {
             setAddHN(true)
@@ -31,13 +32,16 @@ function App() {
         console.log(`My Product Hunt State is ${addPH}!`)
     }
 
-    function toggleFeed() {
-        if (addHN === true) {
-            setFeed(...article())
-        }
-        if (addPH === true) {
-            setFeed(...producthunt())
-        }
+    function toggleHNFeed() {
+
+        setFeed([...feed, <Article/>])
+
+        console.log(feed)
+    }
+
+    function togglePHFeed() {
+            setFeed([...feed, <ProductHunt/>])
+        console.log(feed)
     }
 
     function closeModal() {
@@ -50,8 +54,8 @@ function App() {
 
     return (
     <>
-        <div>
-            <nav className="border-b-4 flex justify-between items-center px-4 pe-2 h-10">
+        <div className="fixed">
+            <nav className="border-b-4 flex justify-between items-center px-4 pe-2 h-10 w-screen">
                 <h1 className='text-3xl font-bold'>Coco.</h1>
                 <div className="flex-grow"></div>
                 <div className="flex gap-4 items-center">
@@ -115,7 +119,7 @@ function App() {
                                                         <div>
                                                             <div className="text-xl">Hacker News</div>
                                                             <div className="text-sm text-gray-400">Top Stories of the day</div>
-                                                            <button onClick={toggleHNState} onChange={toggleFeed}>Add</button>
+                                                            <button onClick={toggleHNFeed}>Add</button>
 
                                                         </div>
                                                     </a>
@@ -128,7 +132,7 @@ function App() {
                                                         <div>
                                                             <div className="text-xl">Product Hunt</div>
                                                             <div className="text-sm text-gray-400">Trending new releases</div>
-                                                            <button onClick={togglePHState}>Add</button>
+                                                            <button id="HN" onClick={togglePHFeed}>Add</button>
 
                                                         </div>
                                                     </a>
@@ -143,10 +147,10 @@ function App() {
                 </div>
             </nav>
         </div>
-        <div className="flex">
+        <div className="flex pt-9">
             {feed.map((f) => {
                 return (
-                    <div key={1}>{f}</div>
+                    <div key={f.id}>{f}</div>
                 )
             })}
 

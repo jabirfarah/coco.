@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const ProductHunt = () => {
     const [productHuntItems, setProductHuntItems] = useState([]);
     const url = 'https://api.producthunt.com/v2/api/graphql'
-    const query = `
+    const query =`
         {
             posts {
                 nodes {
@@ -32,7 +32,7 @@ const ProductHunt = () => {
         })
         const data = await response.json()
         const dataParse = await JSON.parse(JSON.stringify(data))
-        setProductHuntItems(dataParse.data.posts.nodes);
+        await setProductHuntItems(dataParse.data.posts.nodes);
         await console.log(dataParse.data.posts.nodes)
         return  dataParse;
     }
@@ -41,7 +41,7 @@ const ProductHunt = () => {
 
 
     return (
-        <div className="">
+        <div className="w-[50vw]">
             <header className=" gap-2 flex items-center align-middle justify-center p-2 mb-4 border-b-2 border-red-500 text-sm text-gray-400 font-bold uppercase tracking-widest">
                 <img className="w-6 h-6" alt="Product Hunt Logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fpopular-services-brands-vol-2%2F512%2Fproduct-hunt-1024.png&f=1&nofb=1&ipt=8ee3711ce5423811d154888c2ba24ddda3ef909c44c99427673082f1fbd99c67&ipo=images"/>
                 <h1> <a target="_blank" rel="noreferrer" href="#">Product Hunt</a> </h1>
@@ -61,15 +61,7 @@ const ProductHunt = () => {
                 </div>
             )}
             </div>
-
         </div>
-
-
-
-
-
-
-
     )
 }
 
