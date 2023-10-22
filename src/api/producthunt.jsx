@@ -41,17 +41,17 @@ const ProductHunt = () => {
 
 
     return (
-        <div className="w-[50vw]">
-            <header className=" gap-2 flex items-center align-middle justify-center p-2 mb-4 border-b-2 border-red-500 text-sm text-gray-400 font-bold uppercase tracking-widest">
+        <div id="product-hunt" className="h-full w-full flex flex-col flex-shrink-0 ">
+            <header className="gap-2 flex items-center align-middle justify-center p-2 mb-4 border-b-2 border-red-500 text-sm text-gray-400 font-bold uppercase tracking-widest ">
                 <img className="w-6 h-6" alt="Product Hunt Logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fpopular-services-brands-vol-2%2F512%2Fproduct-hunt-1024.png&f=1&nofb=1&ipt=8ee3711ce5423811d154888c2ba24ddda3ef909c44c99427673082f1fbd99c67&ipo=images"/>
                 <h1> <a target="_blank" rel="noreferrer" href="#">Product Hunt</a> </h1>
             </header>
-            <div className="h-screen flex-grow overflow-y-auto">
+            <div className="flex-1 overflow-auto ">
             {productHuntItems.map((post) =>
-                <div key={post.id} className="flex gap-3 hover:bg-gray-50">
+                <div key={post.id} className="flex gap-2 hover:bg-gray-50 ">
                     <img className=" h-10 w-10 rounded-lg" src={post.thumbnail.url} alt={post.name} border="1px solid black" />
                     <div>
-                        <h1> <a target="_blank" rel="noreferrer" href={post.url}>{post.name}</a> </h1>
+                        <h1 className="font-bold"> <a target="_blank" rel="noreferrer" href={post.url}>{post.name}</a> </h1>
                         <p>{post.tagline}</p>
                     </div>
                     <div className="border-2 flex flex-col w-10 h-12 items-center">
