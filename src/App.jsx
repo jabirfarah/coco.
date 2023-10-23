@@ -1,10 +1,9 @@
 import Article from './components/article'
 import ProductHunt from "./api/producthunt.jsx";
-
 import {Fragment, useState} from "react";
 import {Dialog, Transition} from "@headlessui/react";
-import article from "./components/article";
-import producthunt from "./api/producthunt.jsx";
+import GithubTrending from "./api/githubTrending.jsx";
+// import {useLocalStorage} from "./hooks/useLocalStorage.jsx";
 
 function App() {
     const currentDayMonthYear = new Date();
