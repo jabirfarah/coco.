@@ -16,6 +16,9 @@ function App() {
     let [addPH, setAddPH] = useState(false);
     let [phIsAdded, setPHIsAdded] = useState(false);
 
+    let [addGH, setAddGH] = useState(false);
+    let [ghIsAdded, setGHIsAdded] = useState(false);
+
     let [feed, setFeed] = useState([]);
     let [i, setI] = useState(0);
 
@@ -36,6 +39,13 @@ function App() {
         console.log(feed)
     }
 
+    function toggleGHfeed() {
+        setFeed([...feed, { id: i, type: "github", value: <GithubTrending/>}])
+        setI(i + 1)
+
+        setGHIsAdded(true)
+        console.log(feed)
+    }
     function removeHNFeed() {
         // check where HN is then remove it
         setFeed(feed.filter(feed => feed.type !== "hackernews"))
@@ -49,7 +59,11 @@ function App() {
         setPHIsAdded(false);
     }
 
-
+    function removeGHFeed() {
+        setFeed(feed.filter(feed => feed.type !== "github"))
+        setAddGH(false)
+        setGHIsAdded(false);
+    }
 
     function closeModal() {
         setIsOpen(false)
@@ -141,6 +155,18 @@ function App() {
                                                                 <div className="text-xl">Product Hunt</div>
                                                                 <div className="text-sm text-gray-400">Trending new releases</div>
                                                                 {phIsAdded ? <button id="PH" onClick={removePHFeed}>Remove</button> : <button id="PH" onClick={togglePHFeed}>Add</button> }
+                                                            </div>
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a className="flex gap-2 p-4 hover:bg-gray-50 cursor-pointer">
+                                                            <div className="border-2 rounded-lg w-10 h-10 p-[6px]">
+                                                            </div>
+                                                            <div>
+                                                                <div className="text-xl">Github Trending</div>
+                                                                <div className="text-sm text-gray-400">Trending repositories</div>
+                                                                {ghIsAdded ? <button id="GH" onClick={removeGHFeed}>Remove</button> : <button id="GH" onClick={toggleGHfeed}>Add</button>}
                                                             </div>
                                                         </a>
                                                     </li>

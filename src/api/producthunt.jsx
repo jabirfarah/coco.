@@ -36,7 +36,7 @@ const ProductHunt = () => {
         await console.log(dataParse.data.posts.nodes)
         return  dataParse;
     }
-        phCall().then(console.log("finished!"));
+        phCall().then();
         }, []);
 
 
