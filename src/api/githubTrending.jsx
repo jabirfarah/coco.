@@ -9,7 +9,7 @@ export default function GithubTrending() {
             const trendingRepoStringify = JSON.stringify(await trendingRepoMonthly.json());
             const trendingRepoParse = await JSON.parse(trendingRepoStringify);
             await setTrendingRepo(trendingRepoParse);
-            await console.log(trendingRepo);
+            await console.log(trendingRepoParse);
 
 
         }

@@ -57,23 +57,24 @@ const getReadableDate = (d) => {
       currHours = 0;
   }
 
-    return `${currDay > 0 ? `${Math.round(currDay)}d` : currHours > 0 ? `${Math.round(currHours)}h` : `${Math.round(currMinutes)}m`}`;
+    return `${currDay > 0 ? `${Math.round(currDay)} days ago` : currHours > 0 ? `${Math.round(currHours)} hours ago` : `${Math.round(currMinutes)} minutes ago`}`;
 }
 
 
   return (
   
-    <div className="border-2 w-full max-w-md">
-      <header className='flex items-center align-middle justify-center p-2 mb-4 border-b-2 border-red-500 text-sm text-gray-400 font-bold uppercase tracking-widest'>
+    <div className="border-2  max-w-md rounded-lg bg-white m-4">
+      <header className='flex items-center align-middle justify-center p-2 mb-4 border-b-2 border-red-500 text-sm tracking-widest'>
         <img className="w-6 h-6 mr-2" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic-00.iconduck.com%2Fassets.00%2Fycombinator-icon-256x256-rkgflvjo.png&f=1&nofb=1&ipt=dc5b3b1790dcd6a2ef14f95fa864c5369506b38c7fdeba2171aa8c0931e9ddc8&ipo=images" alt=""></img>
         <div>Hackernews</div>
       </header>
       <ul className="h-screen flex-grow overflow-y-auto">
-      { hn.map((article) => (
+      {
+          hn.map((article) => (
             <li key={article.id} className="text-left hover:bg-gray-50">
                 <div className=" ">
                     <a rel="noreferrer" href={article.url} target="_blank">{article.title}</a>
-                    <p className="text-sm text-gray-400 pt-0.5 px-3"> <span className="text-orange-600">Hacker News</span> • {getReadableDate(article.time)}</p>
+                    <p className="text-xs text-gray-400 pt-0.5 px-3"> <span className="text-orange-600">{`• ${article.score} points`}</span> • {getReadableDate(article.time)} • <a href={`https://news.ycombinator.com/item?id=${article.id}`} target="_blank">Comments</a></p>
                  
                 </div>
             </li>
