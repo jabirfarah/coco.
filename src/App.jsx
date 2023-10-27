@@ -55,7 +55,7 @@ function App() {
 
     function removePHFeed() {
         setFeed(feed.filter(feed => feed.type !== "producthunt"))
-        setAddPH(false)
+        setAddPH(false);
         setPHIsAdded(false);
     }
 
