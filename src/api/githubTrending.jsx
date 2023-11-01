@@ -15,30 +15,39 @@ export default function GithubTrending() {
         }
         fetchTrendingRepo().then();
     }, []);
+
+    const nFormatter = (num) => {
+        if (num >= 1000) {
+            return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+        }
+        return num;
+    }
     return (
 
         <>
-            <div id="github-trending" className="h-full w-full flex flex-col flex-shrink-0">
-                <header className="gap-2 flex items-center align-middle justify-center p-2 mb-4 border-b-2 border-red-500 text-sm text-gray-400 font-bold uppercase tracking-widest ">
-                    <img className="w-6 h-6" alt="Github Logo" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpluspng.com%2Fimg-png%2Fgithub-icon-1600.png&f=1&nofb=1&ipt=73956cb1a6f9ec97329d31637c34b1da9e46b7d4ffcdefc07f4df5b02582f78d&ipo=images"/>
-                    <h1> <a target="_blank" rel="noreferrer" href="#">Github Trending</a> </h1>
-                </header>
+            <section id="github-trending" className="h-full w-full border bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md">
+                <div className="border">
+                    <header className="flex items-center align-middle  my-1 mr-2 text-sm tracking-widest">
+                        <img className="w-6 h-6 mr-2 mx-2" alt="Github Logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F09%2FGitHub_logo.png&f=1&nofb=1&ipt=5a928c5b1d40a1ba106a7c6eb942a341380e22a477e0540da0468b8c03f85ae8&ipo=images"/>
+                        <h1 className="text-lg"> <a target="_blank" rel="noreferrer" href="#">Github Trending</a> </h1>
+                    </header>
+                </div>
                 <div className="flex-1 overflow-auto ">
                     {trendingRepo.map((repo) =>
                         <div key={repo.id} className="flex gap-2 hover:bg-gray-50 ">
                             <img className=" h-10 w-10 rounded-lg" src={repo.avatar} alt={repo.name} border="1px solid black" />
                             <div>
-                                <h1 className="font-bold"> <a target="_blank" rel="noreferrer" href={repo.url}>{repo.name}</a> </h1>
-                                <p>{repo.description}</p>
+                                <h1 className="font-bold"> <a target="_blank" rel="noreferrer" href={repo.url}>{`${repo.author} / ${repo.name}`}</a> </h1>
+                                <p className="text-sm text-gray-500">{repo.description}</p>
                             </div>
-                            <div className="border-2 flex flex-col w-10 h-12 items-center">
-                                <svg className="" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/></svg>
-                                <h1>{repo.stars}</h1>
+                            <div className="border flex flex-col w-10 h-12 items-center text-xs justify-end pb-1 flex-shrink-0">
+                                <svg className="mb-1" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"> <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+                                <h1>{nFormatter(repo.stars)}</h1>
                             </div>
                         </div>
                     )}
                 </div>
-            </div>
+            </section>
         </>
     )
 }

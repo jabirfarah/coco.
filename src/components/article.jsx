@@ -63,14 +63,14 @@ const getReadableDate = (d) => {
 
   return (
 
-    <div className="border bg-white mb-2 shadow-xl">
-        <div className="w-full border">
-      <header className='flex items-center align-middle  my-1 mr-2 text-sm tracking-widest'>
-        <img className="w-5 h-5 mr-2 mx-2" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic-00.iconduck.com%2Fassets.00%2Fycombinator-icon-256x256-rkgflvjo.png&f=1&nofb=1&ipt=dc5b3b1790dcd6a2ef14f95fa864c5369506b38c7fdeba2171aa8c0931e9ddc8&ipo=images" alt=""></img>
-        <div className="text-lg">Hackernews</div>
-      </header>
+    <section className="h-full w-full border bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md">
+        <div className="border">
+          <header className='flex items-center align-middle  my-1 mr-2 text-sm tracking-widest'>
+            <img className="w-5 h-5 mr-2 mx-2" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic-00.iconduck.com%2Fassets.00%2Fycombinator-icon-256x256-rkgflvjo.png&f=1&nofb=1&ipt=dc5b3b1790dcd6a2ef14f95fa864c5369506b38c7fdeba2171aa8c0931e9ddc8&ipo=images" alt=""></img>
+            <div className="text-lg">Hackernews</div>
+          </header>
         </div>
-      <ul className="flex-grow overflow-y-auto h-[87vh]">
+      <ul className="flex-1 overflow-auto">
           {
               hn.map((article) => (
                 <li key={article.id} className="hover:bg-gray-50">
@@ -95,7 +95,7 @@ const getReadableDate = (d) => {
                 </li>
           ))}
       </ul>
-      </div>
+      </section>
      
   )
 }

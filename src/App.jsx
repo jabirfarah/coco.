@@ -75,13 +75,13 @@ function App() {
 
     return (
     <>
-        <div className="bg-[#EFF5FD] h-screen flex flex-col">
-            <div className="bg-[#EFF5FD]">
+        <div className="bg-[#EFF5FD] h-screen flex flex-col font-nunito">
+
                     <nav className="border-b-2 flex justify-between items-center px-4 pe-2">
                         <h1 className='text-3xl font-bold'>Coco.</h1>
                         <div className="flex-grow"></div>
                         <div className="flex gap-4 items-center">
-                            <div>{currentDay}</div>
+                            <div className="text-sm pt-1">{currentDay}</div>
                             <div className="inset-0 flex items-center justify-center">
                                 <button
                                     type="button"
@@ -93,7 +93,7 @@ function App() {
                             </div>
 
                             <Transition appear show={isOpen} as={Fragment}>
-                                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                                <Dialog as="div" className="relative z-10 font-nunito" onClose={closeModal}>
                                     <Transition.Child
                                         as={Fragment}
                                         enter="ease-out duration-300"
@@ -181,14 +181,14 @@ function App() {
                         </div>
                     </nav>
            
-                <div className="flex">
+                <div className="flex flex-grow overflow-x-auto">
                     {feed.map((f) => {
                         return (
                             <div key={f.id}>{f.value}</div>
                         )
                     })}
 
-                </div>
+
             </div>
         </div>
     </>
