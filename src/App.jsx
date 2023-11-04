@@ -1,6 +1,6 @@
 import Article from './components/article'
 import ProductHunt from "./api/producthunt.jsx";
-import {Fragment, useState} from "react";
+import {Fragment, useState, useEffect} from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import GithubTrending from "./api/githubTrending.jsx";
 // import {useLocalStorage} from "./hooks/useLocalStorage.jsx";
@@ -22,6 +22,10 @@ function App() {
     let [feed, setFeed] = useState([]);
     let [i, setI] = useState(0);
 
+    useEffect(() => {
+        localStorage.setItem("feed", JSON.stringify(feed));
+    }, [feed])
+
     function toggleHNFeed() {
 
         setFeed([...feed, { id: i, type: "hackernews",value: <Article/>}])
@@ -36,6 +40,7 @@ function App() {
         setI(i + 1)
 
         setPHIsAdded(true)
+
         console.log(feed)
     }
 
@@ -44,6 +49,7 @@ function App() {
         setI(i + 1)
 
         setGHIsAdded(true)
+
         console.log(feed)
     }
     function removeHNFeed() {
@@ -57,12 +63,14 @@ function App() {
         setFeed(feed.filter(feed => feed.type !== "producthunt"))
         setAddPH(false);
         setPHIsAdded(false);
+
     }
 
     function removeGHFeed() {
         setFeed(feed.filter(feed => feed.type !== "github"))
         setAddGH(false)
         setGHIsAdded(false);
+
     }
 
     function closeModal() {
