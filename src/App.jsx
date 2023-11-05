@@ -211,7 +211,7 @@ function App() {
                         </div>
                     </nav>
 
-            <div className="flex flex-grow overflow-x-auto">
+            <div className="flex flex-grow overflow-x-auto snap-x snap-mandatory">
                 {feed.map((item) => {
                     if (item.type === 'hackernews') {
                         return <Article key={item.id} />;

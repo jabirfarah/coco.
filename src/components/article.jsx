@@ -63,7 +63,7 @@ const getReadableDate = (d) => {
 
   return (
 
-    <section className="h-full w-full border bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md">
+    <section className="h-full w-full border-r bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md snap-center">
         <div className="border">
           <header className='flex items-center align-middle  my-1 mr-2 text-sm tracking-widest'>
             <img className="w-5 h-5 mr-2 mx-2" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic-00.iconduck.com%2Fassets.00%2Fycombinator-icon-256x256-rkgflvjo.png&f=1&nofb=1&ipt=dc5b3b1790dcd6a2ef14f95fa864c5369506b38c7fdeba2171aa8c0931e9ddc8&ipo=images" alt=""></img>
@@ -73,8 +73,8 @@ const getReadableDate = (d) => {
       <ul className="flex-1 overflow-auto">
           {
               hn.map((article) => (
-                <li key={article.id} className="hover:bg-gray-50">
-                    <div className="pb-2">
+                <a key={article.id} href={article.url} className="hover:bg-gray-50 pt-3">
+                    <div className="">
                         <a rel="noreferrer" href={article.url} target="_blank">{article.title}</a>
                         {<p className="text-xs text-gray-400 pt-0.5 px-3 flex gap-1">
                             <span className="text-orange-600">
@@ -92,7 +92,7 @@ const getReadableDate = (d) => {
                         </a>
                         </p>}
                     </div>
-                </li>
+                </a>
           ))}
       </ul>
       </section>
