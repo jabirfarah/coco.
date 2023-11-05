@@ -1,9 +1,8 @@
-import Article from './components/article'
+import Article from './components/article';
 import ProductHunt from "./api/producthunt.jsx";
 import {Fragment, useState, useEffect} from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import GithubTrending from "./api/githubTrending.jsx";
-// import {useLocalStorage} from "./hooks/useLocalStorage.jsx";
 
 function saveToLocalStorage(data) {
     localStorage.setItem('feed', JSON.stringify(data));
@@ -19,8 +18,13 @@ function getFromLocalStorage() {
 }
 
 function App() {
+    //Getting today's date
     const currentDayMonthYear = new Date();
-    const currentDay = currentDayMonthYear.toDateString();
+    let day = currentDayMonthYear.toLocaleDateString('en-EN', { weekday: 'short' })
+    let month = currentDayMonthYear.toLocaleDateString('en-EN', { month: 'short' })
+    let year = currentDayMonthYear.toLocaleDateString('en-EN', { year: 'numeric' })
+    let d = `${day}, ${month} ${currentDayMonthYear.getDate()}, ${year}`;
+
     let [isOpen, setIsOpen] = useState(false);
 
     let [hnIsAdded, setHNIsAdded] = useState(false);
@@ -111,7 +115,7 @@ function App() {
                         <h1 className='text-3xl font-bold'>Coco.</h1>
                         <div className="flex-grow"></div>
                         <div className="flex gap-4 items-center">
-                            <div className="text-sm pt-1">{currentDay}</div>
+                            <div className="text-xs pt-1 text-gray-500">{d}</div>
                             <div className="inset-0 flex items-center justify-center">
                                 <button
                                     type="button"
