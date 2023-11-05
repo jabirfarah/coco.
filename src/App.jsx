@@ -5,47 +5,67 @@ import {Dialog, Transition} from "@headlessui/react";
 import GithubTrending from "./api/githubTrending.jsx";
 // import {useLocalStorage} from "./hooks/useLocalStorage.jsx";
 
+function saveToLocalStorage(data) {
+    localStorage.setItem('feed', JSON.stringify(data));
+}
+
+// Retrieving data from localStorage
+function getFromLocalStorage() {
+    const storedData = localStorage.getItem('feed');
+    if (storedData) {
+        return JSON.parse(storedData);
+    }
+    return [];
+}
+
 function App() {
     const currentDayMonthYear = new Date();
     const currentDay = currentDayMonthYear.toDateString();
     let [isOpen, setIsOpen] = useState(false);
 
-    let [addHN, setAddHN] = useState(false);
     let [hnIsAdded, setHNIsAdded] = useState(false);
 
-    let [addPH, setAddPH] = useState(false);
     let [phIsAdded, setPHIsAdded] = useState(false);
 
-    let [addGH, setAddGH] = useState(false);
     let [ghIsAdded, setGHIsAdded] = useState(false);
 
-    let [feed, setFeed] = useState([]);
+    const [feed, setFeed] = useState(getFromLocalStorage());
     let [i, setI] = useState(0);
 
     useEffect(() => {
-        localStorage.setItem("feed", JSON.stringify(feed));
-    }, [feed])
+        // Check if feed is already added
+        if (feed.some(feed => feed.type === "hackernews")) {
+            setHNIsAdded(true);
+        }
+        if (feed.some(feed => feed.type === "producthunt")) {
+            setPHIsAdded(true);
+        }
+        if (feed.some(feed => feed.type === "github")) {
+            setGHIsAdded(true);
+        }
+
+    }, [feed]);
 
     function toggleHNFeed() {
-
-        setFeed([...feed, { id: i, type: "hackernews",value: <Article/>}])
-        setI(i + 1)
+        // Convert the component to a serializable format, e.g., a plain object
+        const newFeedItem = { id: i, type: 'hackernews', value: 'Article'};
+        setFeed([...feed, newFeedItem]);
+        setI(i + 1);
         setHNIsAdded(true);
-        console.log(feed)
-
     }
+
 
     function togglePHFeed() {
-        setFeed([...feed, { id: i, type: "producthunt", value: <ProductHunt/>}])
-        setI(i + 1)
-
-        setPHIsAdded(true)
-
-        console.log(feed)
+        // Convert the component to a serializable format, e.g., a plain object
+        const newFeedItem = { id: i, type: 'producthunt', value: 'ProductHunt'};
+        setFeed([...feed, newFeedItem]);
+        setI(i + 1);
+        setHNIsAdded(true);
     }
 
+
     function toggleGHfeed() {
-        setFeed([...feed, { id: i, type: "github", value: <GithubTrending/>}])
+        setFeed([...feed, { id: i, type: "github", value: "GithubTrending"}])
         setI(i + 1)
 
         setGHIsAdded(true)
@@ -55,20 +75,17 @@ function App() {
     function removeHNFeed() {
         // check where HN is then remove it
         setFeed(feed.filter(feed => feed.type !== "hackernews"))
-        setAddHN(false);
         setHNIsAdded(false);
     }
 
     function removePHFeed() {
         setFeed(feed.filter(feed => feed.type !== "producthunt"))
-        setAddPH(false);
         setPHIsAdded(false);
 
     }
 
     function removeGHFeed() {
         setFeed(feed.filter(feed => feed.type !== "github"))
-        setAddGH(false)
         setGHIsAdded(false);
 
     }
@@ -80,6 +97,11 @@ function App() {
     function openModal() {
         setIsOpen(true)
     }
+
+    useEffect(() => {
+        // Save the feed data to local storage whenever it changes
+        saveToLocalStorage(feed);
+    }, [feed]);
 
     return (
     <>
@@ -188,15 +210,18 @@ function App() {
                             </Transition>
                         </div>
                     </nav>
-           
-                <div className="flex flex-grow overflow-x-auto">
-                    {feed.map((f) => {
-                        return (
-                            <div key={f.id}>{f.value}</div>
-                        )
-                    })}
 
-
+            <div className="flex flex-grow overflow-x-auto">
+                {feed.map((item) => {
+                    if (item.type === 'hackernews') {
+                        return <Article key={item.id} />;
+                    } else if (item.type === 'producthunt') {
+                        return <ProductHunt key={item.id} />;
+                    } else if (item.type === 'github') {
+                        return <GithubTrending key={item.id} />;
+                    }
+                    return null;
+                })}
             </div>
         </div>
     </>
