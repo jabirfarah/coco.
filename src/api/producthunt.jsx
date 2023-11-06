@@ -43,9 +43,9 @@ const ProductHunt = () => {
     return (
         <section id="product-hunt" className="h-full w-full border-r bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md snap-center">
             <div className="border">
-                <header className="flex items-center align-middle  my-1 mr-2 text-sm tracking-widest">
-                    <img className="w-7 h-7 mr-2 mx-2" alt="Product Hunt Logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fpopular-services-brands-vol-2%2F512%2Fproduct-hunt-1024.png&f=1&nofb=1&ipt=8ee3711ce5423811d154888c2ba24ddda3ef909c44c99427673082f1fbd99c67&ipo=images"/>
-                    <h1 className="text-lg"> <a target="_blank" rel="noreferrer" href="#">Product Hunt</a> </h1>
+                <header className="flex items-center align-middle  my-1 mr-2 text-sm">
+                    <img className="w-5 h-5 mr-2 mx-2" alt="Product Hunt Logo" src="https://static-00.iconduck.com/assets.00/product-hunt-icon-2048x2048-96cf7j56.png"/>
+                    <h1 className="text-[17px]"> <a target="_blank" rel="noreferrer" href="#">Product Hunt</a> </h1>
                 </header>
             </div>
             <div className="flex-1 overflow-auto">

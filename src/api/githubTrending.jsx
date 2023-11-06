@@ -27,9 +27,9 @@ export default function GithubTrending() {
         <>
             <section id="github-trending" className="h-full w-full border-r bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md snap-center">
                 <div className="border">
-                    <header className="flex items-center align-middle  my-1 mr-2 text-sm tracking-widest">
-                        <img className="w-6 h-6 mr-2 mx-2" alt="Github Logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F09%2FGitHub_logo.png&f=1&nofb=1&ipt=5a928c5b1d40a1ba106a7c6eb942a341380e22a477e0540da0468b8c03f85ae8&ipo=images"/>
-                        <h1 className="text-lg"> <a target="_blank" rel="noreferrer" href="#">Github Trending</a> </h1>
+                    <header className="flex items-center align-middle my-1 mr-2 text-sm">
+                        <img className="w-5 h-5 mr-2 mx-2 " alt="Github Logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F09%2FGitHub_logo.png&f=1&nofb=1&ipt=5a928c5b1d40a1ba106a7c6eb942a341380e22a477e0540da0468b8c03f85ae8&ipo=images"/>
+                        <h1 className="text-[17px]"> <a target="_blank" rel="noreferrer" href="#">Github Trending</a> </h1>
                     </header>
                 </div>
                 <div className="flex-1 overflow-auto">

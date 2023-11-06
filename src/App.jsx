@@ -8,7 +8,6 @@ function saveToLocalStorage(data) {
     localStorage.setItem('feed', JSON.stringify(data));
 }
 
-// Retrieving data from localStorage
 function getFromLocalStorage() {
     const storedData = localStorage.getItem('feed');
     if (storedData) {
@@ -19,18 +18,18 @@ function getFromLocalStorage() {
 
 function App() {
     //Getting today's date
-    const currentDayMonthYear = new Date();
-    let day = currentDayMonthYear.toLocaleDateString('en-EN', { weekday: 'short' })
-    let month = currentDayMonthYear.toLocaleDateString('en-EN', { month: 'short' })
-    let year = currentDayMonthYear.toLocaleDateString('en-EN', { year: 'numeric' })
-    let d = `${day}, ${month} ${currentDayMonthYear.getDate()}, ${year}`;
+    const today = new Date();
+    let date = `
+    ${today.toLocaleDateString('en-EN', { weekday: 'short' })}, 
+    ${today.toLocaleDateString('en-EN', { month: 'short' })} 
+    ${today.getDate()}, 
+    ${today.toLocaleDateString('en-EN', { year: 'numeric' })}
+    `;
 
     let [isOpen, setIsOpen] = useState(false);
 
     let [hnIsAdded, setHNIsAdded] = useState(false);
-
     let [phIsAdded, setPHIsAdded] = useState(false);
-
     let [ghIsAdded, setGHIsAdded] = useState(false);
 
     const [feed, setFeed] = useState(getFromLocalStorage());
@@ -115,7 +114,7 @@ function App() {
                         <h1 className='text-3xl font-bold'>Coco.</h1>
                         <div className="flex-grow"></div>
                         <div className="flex gap-4 items-center">
-                            <div className="text-xs pt-1 text-gray-500">{d}</div>
+                            <div className="text-xs pt-1 text-gray-500">{date}</div>
                             <div className="inset-0 flex items-center justify-center">
                                 <button
                                     type="button"
@@ -151,15 +150,15 @@ function App() {
                                                 leaveFrom="opacity-100 scale-100"
                                                 leaveTo="opacity-0 scale-95"
                                             >
-                                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white py-4 text-left align-middle shadow-xl transition-all">
+                                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white py-2 text-left align-middle shadow-xl transition-all">
                                                     <Dialog.Title
                                                         as="h6"
-                                                        className="flex items-center h-12 px-4 justify-between text-lg font-medium leading-6 text-gray-900 bg-gray-50 border-b-2 divide-solid"
+                                                        className="flex items-center h-10 px-4 justify-between text-sm font-medium leading-6 text-gray-900 bg-gray-50 border-b"
                                                     >
                                                         Add Feed
                                                         <button
                                                             type="button"
-                                                            className="inline-flex justify-center align-middle items-center rounded-lg border border-transparent bg-blue-100 px-2 py-2 text-xs font-medium text-blue-900 hover:bg-gray-200"
+                                                            className="inline-flex justify-center align-middle items-center rounded-lg border border-transparent  px-2 py-2 text-xs font-medium text-blue-900 hover:bg-gray-100"
                                                             onClick={closeModal}
                                                         >
                                                             <svg xmlns="http://www.w3.org/2000/svg" height="0.75em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
