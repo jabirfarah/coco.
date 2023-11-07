@@ -1,8 +1,16 @@
-# React + Vite
+# COCO.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern tech news aggregator built right into the web. 
 
-Currently, two official plugins are available:
+Built using
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [GraphQL](https://graphql.org/)
+- [Vite](https://vitejs.dev/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+API's:
+- [Hacker News API](https://github.com/HackerNews/API)
+- [Github Trending Repositories](https://github.com/alisoft/github-trending-api)
+- [Product Hunt API](https://api.producthunt.com/v2/docs)
+
+
