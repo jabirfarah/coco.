@@ -1,19 +1,32 @@
 import { useState, useEffect } from "react";
+
 export default function GithubTrending() {
     const [trendingRepo, setTrendingRepo] = useState([]);
 
-    useEffect( () => {const fetchTrendingRepo = async () => {
+    useEffect(() => {const fetchTrendingRepo = async () => {
         // https://api.gitterapp.com/repositories?since=weekly
+        try {
 
-            const trendingRepoMonthly = await fetch('https://api.gitterapp.com/repositories?since=monthly')
-            const trendingRepoStringify = JSON.stringify(await trendingRepoMonthly.json());
+            const options = {
+                mode: 'cors',
+                method: "GET",
+                headers: {
+                  "content-type": "application/json"
+                  
+                }
+            };
+
+            const trendingRepoMonthly = await fetch('https://api.gitterapp.com/repositories?since=monthly', options)
+            const trendingRepoJson = await trendingRepoMonthly.json();
+            const trendingRepoStringify = await JSON.stringify(trendingRepoJson);
             const trendingRepoParse = await JSON.parse(trendingRepoStringify);
-            await setTrendingRepo(trendingRepoParse);
+            await setTrendingRepo([trendingRepoParse]);
             await console.log(trendingRepoParse);
-
-
+        } catch (error) {
+            console.error(error);
         }
-        fetchTrendingRepo().then();
+        }
+        fetchTrendingRepo();
     }, []);
 
     const nFormatter = (num) => {
@@ -23,7 +36,6 @@ export default function GithubTrending() {
         return num;
     }
     return (
-
         <>
             <section id="github-trending" className="h-full w-full border-r bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md snap-center">
                 <div className="border">
@@ -34,10 +46,10 @@ export default function GithubTrending() {
                 </div>
                 <div className="flex-1 overflow-auto">
                     {trendingRepo.map((repo) =>
-                        <div key={repo.id} className="flex gap-2 hover:bg-gray-50 justify-between p-2">
+                        <div  className="flex gap-2 hover:bg-gray-50 justify-between p-2">
                             <div className="flex flex-row">
                             <div>
-                                <h1 className="font-bold"> <a target="_blank" rel="noreferrer" href={repo.url}>{`${repo.author} / ${repo.name}`}</a> </h1>
+                                <h1 className="font-bold"><a target="_blank" rel="noreferrer" href={repo.url}>{`${repo.author} / ${repo.name}`}</a></h1>
                                 <p className="text-sm text-gray-500">{repo.description}</p>
                             </div>
                             </div>

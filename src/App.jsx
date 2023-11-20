@@ -109,7 +109,6 @@ function App() {
     return (
     <>
         <div className="h-screen flex flex-col font-nunito">
-
                     <nav className="border-b-2 flex justify-between items-center px-4 pe-2">
                         <h1 className='text-3xl font-bold'>Coco.</h1>
                         <div className="flex-grow"></div>
