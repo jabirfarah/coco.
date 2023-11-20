@@ -8,10 +8,10 @@ export default function GithubTrending() {
         try {
 
             const options = {
-                mode: 'cors',
+                
                 method: "GET",
                 headers: {
-                  "content-type": "application/json"
+                  
                   
                 }
             };
@@ -20,7 +20,7 @@ export default function GithubTrending() {
             const trendingRepoJson = await trendingRepoMonthly.json();
             const trendingRepoStringify = await JSON.stringify(trendingRepoJson);
             const trendingRepoParse = await JSON.parse(trendingRepoStringify);
-            await setTrendingRepo([trendingRepoParse]);
+            await setTrendingRepo(trendingRepoParse);
             await console.log(trendingRepoParse);
         } catch (error) {
             console.error(error);
