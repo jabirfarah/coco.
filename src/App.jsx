@@ -194,7 +194,7 @@ function App() {
 
                                                     <ul className="mt-2">
                                                         <li className="">
-                                                            <a className="flex gap-2 p-4 hover:bg-gray-50 cursor-pointer">
+                                                            <div className="flex gap-2 p-4 hover:bg-gray-50 cursor-pointer" onClick={hnIsAdded ? removeHNFeed : toggleHNFeed}>
                                                                 <div className="border-2 rounded-lg w-10 h-10 p-[6px]">
                                                                     <img className="rounded-md items-center  h-6 w-6" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic-00.iconduck.com%2Fassets.00%2Fycombinator-icon-256x256-rkgflvjo.png&f=1&nofb=1&ipt=dc5b3b1790dcd6a2ef14f95fa864c5369506b38c7fdeba2171aa8c0931e9ddc8&ipo=images" alt=""/>
                                                                 </div>
@@ -204,10 +204,10 @@ function App() {
                                                                     {hnIsAdded ? <button id="HN" onClick={removeHNFeed}>Remove</button> : <button onClick={toggleHNFeed}>Add</button>}
 
                                                                 </div>
-                                                            </a>
+                                                            </div>
                                                         </li>
                                                         <li>
-                                                            <a className="flex gap-2 p-4 hover:bg-gray-50 cursor-pointer">
+                                                            <div className="flex gap-2 p-4 hover:bg-gray-50 cursor-pointer" onClick={phIsAdded ? removePHFeed : togglePHFeed}>
                                                                 <div className="border-2 rounded-lg w-10 h-10 p-[6px]">
                                                                     <img className="rounded-md items-center h-6 w-6" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fpopular-services-brands-vol-2%2F512%2Fproduct-hunt-1024.png&f=1&nofb=1&ipt=8ee3711ce5423811d154888c2ba24ddda3ef909c44c99427673082f1fbd99c67&ipo=images" alt=""/>
                                                                 </div>
@@ -216,11 +216,11 @@ function App() {
                                                                     <div className="text-sm text-gray-400">Trending new releases</div>
                                                                     {phIsAdded ? <button id="PH" onClick={removePHFeed}>Remove</button> : <button id="PH" onClick={togglePHFeed}>Add</button> }
                                                                 </div>
-                                                            </a>
+                                                            </div>
                                                         </li>
 
                                                         <li>
-                                                            <a className="flex gap-2 p-4 hover:bg-gray-50 cursor-pointer">
+                                                            <div className="flex gap-2 p-4 hover:bg-gray-50 cursor-pointer" onClick={ghIsAdded ? removeGHFeed : toggleGHfeed}>
                                                                 <div className="border-2 rounded-lg w-10 h-10 p-[6px]">
                                                                     <img className="rounded-md items-center h-6 w-6" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpluspng.com%2Fimg-png%2Fgithub-icon-1600.png&f=1&nofb=1&ipt=73956cb1a6f9ec97329d31637c34b1da9e46b7d4ffcdefc07f4df5b02582f78d&ipo=images" alt=""/>
                                                                 </div>
@@ -229,7 +229,7 @@ function App() {
                                                                     <div className="text-sm text-gray-400">Trending repositories</div>
                                                                     {ghIsAdded ? <button id="GH" onClick={removeGHFeed}>Remove</button> : <button id="GH" onClick={toggleGHfeed}>Add</button>}
                                                                 </div>
-                                                            </a>
+                                                            </div>
                                                         </li>
                                                     </ul>
                                                 </Dialog.Panel>
@@ -256,18 +256,18 @@ function App() {
                 })}
             </div> :
             //If there is no Feed 
-            <div className='flex justify-center items-center h-full text-center'>
-                <div className=''>
+            <div className='flex flex-col justify-center items-center h-full text-center'>
+                
                     <img 
-                    className='h-12 w-12 '
+                    className='h-28 w-28 '
                     src='https://cdn0.iconfinder.com/data/icons/files-documents/512/YPS__file_document_add_plus_sheet_paper_page_text-1024.png'></img>
 
-                    <div>You have no added any feeds yet</div>
+                    <div className='text-xl'>You have not added any feeds yet.</div>
                     <button
                     onClick={openModal} 
                     className="rounded-md bg-black bg-opacity-20 px-2 py-1 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
                     >Add a feed now.</button>
-                </div>
+        
             </div>}
         </div>
     </>
