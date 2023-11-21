@@ -4,17 +4,9 @@ import {Fragment, useState, useEffect} from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import GithubTrending from "./api/githubTrending.jsx";
 
-function saveToLocalStorage(data) {
-    localStorage.setItem('feed', JSON.stringify(data));
-}
 
-function getFromLocalStorage() {
-    const storedData = localStorage.getItem('feed');
-    if (storedData) {
-        return JSON.parse(storedData);
-    }
-    return [];
-}
+
+
 
 function App() {
     //Getting today's date
@@ -35,10 +27,40 @@ function App() {
     const [feed, setFeed] = useState(getFromLocalStorage());
     let [i, setI] = useState(0);
 
+    const [isAnyFeedAdded, setIsAnyFeedAdded] = useState(true);
+
+    function getFromLocalStorage() {
+        const storedData = localStorage.getItem('feed');
+        if (storedData) {
+            return JSON.parse(storedData);
+        }
+        return [];
+    }
+
+    function saveToLocalStorage(data) {
+        
+        localStorage.setItem('feed', JSON.stringify(data));
+    }
+
+    function checkifFeedisEmpty() {
+        if ((hnIsAdded === true) || (phIsAdded === true) || (ghIsAdded === true)) {
+            setIsAnyFeedAdded(true)
+            console.log("is any feed is set to (should be true): " + isAnyFeedAdded)
+            return;
+        } else {
+            setIsAnyFeedAdded(false)
+            console.log("is any feed is set to (should be false): " + isAnyFeedAdded)
+
+            return;
+        }
+        console.log("is any feed is set to: " + isAnyFeedAdded)
+        return;
+    }
     useEffect(() => {
         // Check if feed is already added
         if (feed.some(feed => feed.type === "hackernews")) {
             setHNIsAdded(true);
+
         }
         if (feed.some(feed => feed.type === "producthunt")) {
             setPHIsAdded(true);
@@ -46,7 +68,7 @@ function App() {
         if (feed.some(feed => feed.type === "github")) {
             setGHIsAdded(true);
         }
-
+        checkifFeedisEmpty()
     }, [feed]);
 
     function toggleHNFeed() {
@@ -55,6 +77,7 @@ function App() {
         setFeed([...feed, newFeedItem]);
         setI(i + 1);
         setHNIsAdded(true);
+        checkifFeedisEmpty()
     }
 
 
@@ -64,6 +87,8 @@ function App() {
         setFeed([...feed, newFeedItem]);
         setI(i + 1);
         setHNIsAdded(true);
+        checkifFeedisEmpty()
+
     }
 
 
@@ -72,24 +97,27 @@ function App() {
         setI(i + 1)
 
         setGHIsAdded(true)
+        checkifFeedisEmpty()
 
-        console.log(feed)
     }
     function removeHNFeed() {
         // check where HN is then remove it
         setFeed(feed.filter(feed => feed.type !== "hackernews"))
         setHNIsAdded(false);
+        checkifFeedisEmpty()
+
     }
 
     function removePHFeed() {
         setFeed(feed.filter(feed => feed.type !== "producthunt"))
         setPHIsAdded(false);
-
+        checkifFeedisEmpty()
     }
 
     function removeGHFeed() {
         setFeed(feed.filter(feed => feed.type !== "github"))
         setGHIsAdded(false);
+        checkifFeedisEmpty()
 
     }
 
@@ -109,9 +137,9 @@ function App() {
     return (
     <>
         <div className="h-screen flex flex-col font-nunito">
-                    <nav className="border-b-2 flex justify-between items-center px-4 pe-2">
+                    <nav className="border-b-2 flex justify-between items-center px-4 pe-2 space-x-3">
                         <h1 className='text-3xl font-bold'>Coco.</h1>
-                        <div className="flex-grow"></div>
+
                         <div className="flex gap-4 items-center">
                             <div className="text-xs pt-1 text-gray-500">{date}</div>
                             <div className="inset-0 flex items-center justify-center">
@@ -213,6 +241,8 @@ function App() {
                         </div>
                     </nav>
 
+            {isAnyFeedAdded ? 
+            //If feed already exists
             <div className="flex flex-grow overflow-x-auto snap-x snap-mandatory">
                 {feed.map((item) => {
                     if (item.type === 'hackernews') {
@@ -224,7 +254,11 @@ function App() {
                     }
                     return null;
                 })}
-            </div>
+            </div> :
+            //If there is no Feed 
+            <div>
+                There is no feed
+            </div>}
         </div>
     </>
   )

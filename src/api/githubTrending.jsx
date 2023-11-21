@@ -6,12 +6,9 @@ export default function GithubTrending() {
     useEffect(() => {const fetchTrendingRepo = async () => {
         // https://api.gitterapp.com/repositories?since=weekly
         try {
-
             const options = {
-                
                 method: "GET",
                 headers: {
-                  
                   
                 }
             };
