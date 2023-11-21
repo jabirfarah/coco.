@@ -256,8 +256,18 @@ function App() {
                 })}
             </div> :
             //If there is no Feed 
-            <div>
-                There is no feed
+            <div className='flex justify-center items-center h-full text-center'>
+                <div className=''>
+                    <img 
+                    className='h-12 w-12 '
+                    src='https://cdn0.iconfinder.com/data/icons/files-documents/512/YPS__file_document_add_plus_sheet_paper_page_text-1024.png'></img>
+
+                    <div>You have no added any feeds yet</div>
+                    <button
+                    onClick={openModal} 
+                    className="rounded-md bg-black bg-opacity-20 px-2 py-1 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                    >Add a feed now.</button>
+                </div>
             </div>}
         </div>
     </>
