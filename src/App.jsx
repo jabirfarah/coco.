@@ -10,6 +10,8 @@ import GithubTrending from "./api/githubTrending.jsx";
 
 function App() {
     //Getting today's date
+    const [isAnyFeedAdded, setIsAnyFeedAdded] = useState(false);
+
     const today = new Date();
     let date = `
     ${today.toLocaleDateString('en-EN', { weekday: 'short' })}, 
@@ -27,7 +29,6 @@ function App() {
     const [feed, setFeed] = useState(getFromLocalStorage());
     let [i, setI] = useState(0);
 
-    const [isAnyFeedAdded, setIsAnyFeedAdded] = useState(true);
 
     function getFromLocalStorage() {
         const storedData = localStorage.getItem('feed');
@@ -43,24 +44,23 @@ function App() {
     }
 
     function checkifFeedisEmpty() {
-        if ((hnIsAdded === true) || (phIsAdded === true) || (ghIsAdded === true)) {
-            setIsAnyFeedAdded(true)
-            console.log("is any feed is set to (should be true): " + isAnyFeedAdded)
-            return;
-        } else {
+        if (feed.length == 0) {
             setIsAnyFeedAdded(false)
             console.log("is any feed is set to (should be false): " + isAnyFeedAdded)
+            console.log(feed.length)
+        } else {
+            setIsAnyFeedAdded(true)
+            console.log("is any feed is set to (should be true): " + isAnyFeedAdded)
 
-            return;
         }
-        console.log("is any feed is set to: " + isAnyFeedAdded)
-        return;
+
+       
+      
     }
     useEffect(() => {
         // Check if feed is already added
         if (feed.some(feed => feed.type === "hackernews")) {
             setHNIsAdded(true);
-
         }
         if (feed.some(feed => feed.type === "producthunt")) {
             setPHIsAdded(true);
@@ -68,9 +68,15 @@ function App() {
         if (feed.some(feed => feed.type === "github")) {
             setGHIsAdded(true);
         }
-        checkifFeedisEmpty()
+        saveToLocalStorage(feed);
+        
+      
     }, [feed]);
 
+
+    useEffect(() => {
+        checkifFeedisEmpty()
+    }, [feed]);
     function toggleHNFeed() {
         // Convert the component to a serializable format, e.g., a plain object
         const newFeedItem = { id: i, type: 'hackernews', value: 'Article'};
@@ -88,24 +94,21 @@ function App() {
         setI(i + 1);
         setHNIsAdded(true);
         checkifFeedisEmpty()
-
     }
 
 
     function toggleGHfeed() {
         setFeed([...feed, { id: i, type: "github", value: "GithubTrending"}])
         setI(i + 1)
-
         setGHIsAdded(true)
         checkifFeedisEmpty()
-
     }
+
     function removeHNFeed() {
         // check where HN is then remove it
         setFeed(feed.filter(feed => feed.type !== "hackernews"))
         setHNIsAdded(false);
         checkifFeedisEmpty()
-
     }
 
     function removePHFeed() {
@@ -128,11 +131,6 @@ function App() {
     function openModal() {
         setIsOpen(true)
     }
-
-    useEffect(() => {
-        // Save the feed data to local storage whenever it changes
-        saveToLocalStorage(feed);
-    }, [feed]);
 
     return (
     <>
@@ -259,7 +257,7 @@ function App() {
             <div className='flex flex-col justify-center items-center h-full text-center'>
                 
                     <img 
-                    className='h-28 w-28 '
+                    className='h-28 w-28'
                     src='https://cdn0.iconfinder.com/data/icons/files-documents/512/YPS__file_document_add_plus_sheet_paper_page_text-1024.png'></img>
 
                     <div className='text-xl'>You have not added any feeds yet.</div>
