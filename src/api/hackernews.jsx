@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 // Need to get 30 IDs from the top stories API Call
 // Then take that ID and run the story API call on all of them
 
-const Article = () => {
+const HackerNews = () => {
         const [hn, setHN] = useState([]);
         useEffect(() => {
         const getStories = async () => {
@@ -103,4 +103,4 @@ const getReadableDate = (d) => {
 }
 
 
-export default Article;
+export default HackerNews;

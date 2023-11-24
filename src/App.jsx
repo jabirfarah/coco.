@@ -1,12 +1,8 @@
-import Article from './components/article';
+import HackerNews from './api/hackernews.jsx';
 import ProductHunt from "./api/producthunt.jsx";
 import {Fragment, useState, useEffect} from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import GithubTrending from "./api/githubTrending.jsx";
-
-
-
-
 
 function App() {
     //Getting today's date
@@ -54,8 +50,6 @@ function App() {
 
         }
 
-       
-      
     }
     useEffect(() => {
         // Check if feed is already added
@@ -79,7 +73,7 @@ function App() {
     }, [feed]);
     function toggleHNFeed() {
         // Convert the component to a serializable format, e.g., a plain object
-        const newFeedItem = { id: i, type: 'hackernews', value: 'Article'};
+        const newFeedItem = { id: i, type: 'hackernews', value: 'HackerNews'};
         setFeed([...feed, newFeedItem]);
         setI(i + 1);
         setHNIsAdded(true);
@@ -244,7 +238,7 @@ function App() {
             <div className="flex flex-grow overflow-x-auto snap-x snap-mandatory">
                 {feed.map((item) => {
                     if (item.type === 'hackernews') {
-                        return <Article key={item.id} />;
+                        return <HackerNews key={item.id} />;
                     } else if (item.type === 'producthunt') {
                         return <ProductHunt key={item.id} />;
                     } else if (item.type === 'github') {
