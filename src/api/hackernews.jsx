@@ -67,25 +67,25 @@ const getReadableDate = (d) => {
         <div className="border">
           <header className='flex items-center align-middle  my-1 mr-2 text-sm'>
             <img className="w-5 h-5 mr-2 mx-2" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic-00.iconduck.com%2Fassets.00%2Fycombinator-icon-256x256-rkgflvjo.png&f=1&nofb=1&ipt=dc5b3b1790dcd6a2ef14f95fa864c5369506b38c7fdeba2171aa8c0931e9ddc8&ipo=images" alt=""></img>
-            <div className="text-[17px]">Hackernews</div>
+            <h1 className="text-[17px]"> <a target="_blank" rel="noreferrer" href="https://news.ycombinator.com/">Hacker News</a> </h1>
           </header>
         </div>
       <ul className="flex-1 overflow-auto">
           {
-              hn.map((article) => (
-                  <a key={article.id} href={article.url}>
-                    <div key={article.id} className="hover:bg-gray-50 py-2 px-1.5">
+              hn.map((post) => (
+                  <a key={post.id} href={post.url}>
+                    <div key={post.id} className="hover:bg-gray-50 py-2 px-1.5">
                         <div className="">
-                            <div className="text">{article.title}</div>
+                            <div className="text">{post.title}</div>
                             {<p className="text-xs text-gray-400 pt-0.5 px-3 flex gap-1">
                                 <span className="text-orange-600">
-                                    {`• ${article.score} points`}
+                                    {`• ${post.score} points`}
                                 </span>
                                 • <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
 
-                                {getReadableDate(article.time)} • <a className="flex gap-1" href={`https://news.ycombinator.com/item?id=${article.id}`} target="_blank" rel="noreferrer">
+                                {getReadableDate(post.time)} • <a className="flex gap-1" href={`https://news.ycombinator.com/item?id=${post.id}`} target="_blank" rel="noreferrer">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                                 </svg>

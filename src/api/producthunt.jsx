@@ -45,7 +45,7 @@ const ProductHunt = () => {
             <div className="border">
                 <header className="flex items-center align-middle  my-1 mr-2 text-sm">
                     <img className="w-5 h-5 mr-2 mx-2" alt="Product Hunt Logo" src="https://static-00.iconduck.com/assets.00/product-hunt-icon-2048x2048-96cf7j56.png"/>
-                    <h1 className="text-[17px]"> <a target="_blank" rel="noreferrer" href="#">Product Hunt</a> </h1>
+                    <h1 className="text-[17px]"> <a target="_blank" rel="noreferrer" href="https://www.producthunt.com/">Product Hunt</a> </h1>
                 </header>
             </div>
             <div className="flex-1 overflow-auto">
