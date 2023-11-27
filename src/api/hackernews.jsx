@@ -73,7 +73,7 @@ const getReadableDate = (d) => {
       <ul className="flex-1 overflow-auto">
           {
               hn.map((post) => (
-                  <a key={post.id} href={post.url}>
+                  <a className=' cursor-pointer' key={post.id} href={post.url}>
                     <div key={post.id} className="hover:bg-gray-50 py-2 px-1.5">
                         <div className="">
                             <div className="font-medium text-sm">{post.title}</div>

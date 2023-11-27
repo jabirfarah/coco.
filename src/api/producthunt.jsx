@@ -50,7 +50,7 @@ const ProductHunt = () => {
             </div>
             <div className="flex-1 overflow-auto">
             {productHuntItems.map((post) =>
-                <a key={post.id} className="flex gap-2 hover:bg-gray-50 justify-between p-2" href={post.url}>
+                <a key={post.id} className="flex gap-2 hover:bg-gray-50 justify-between p-2 cursor-pointer" href={post.url}>
                     <div className="flex gap-2">
                         <img className=" h-12 w-12 rounded-lg " src={post.thumbnail.url} alt={post.name} border="1px solid black" />
                         <div>
