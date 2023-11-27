@@ -41,7 +41,7 @@ const ProductHunt = () => {
 
 
     return (
-        <section id="product-hunt" className="h-full w-full border-r bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md snap-center">
+        <section id="product-hunt" className="h-full w-full border-r bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md md:max-w-lg snap-center">
             <div className="border-b">
                 <header className="flex items-center align-middle  my-1 mr-2 text-sm">
                     <img className="w-5 h-5 mr-2 mx-2" alt="Product Hunt Logo" src="https://static-00.iconduck.com/assets.00/product-hunt-icon-2048x2048-96cf7j56.png"/>
