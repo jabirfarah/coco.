@@ -64,10 +64,10 @@ const getReadableDate = (d) => {
   return (
 
     <section className="h-full w-full border-r bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md snap-center">
-        <div className="border">
+        <div className="border-b">
           <header className='flex items-center align-middle  my-1 mr-2 text-sm'>
             <img className="w-5 h-5 mr-2 mx-2" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic-00.iconduck.com%2Fassets.00%2Fycombinator-icon-256x256-rkgflvjo.png&f=1&nofb=1&ipt=dc5b3b1790dcd6a2ef14f95fa864c5369506b38c7fdeba2171aa8c0931e9ddc8&ipo=images" alt=""></img>
-            <h1 className="text-[17px]"> <a target="_blank" rel="noreferrer" href="https://news.ycombinator.com/">Hacker News</a> </h1>
+            <h1 className="text-[17px]"> <a target="_blank" rel="noreferrer" href="https://news.ycombinator.com/">Hackernews</a> </h1>
           </header>
         </div>
       <ul className="flex-1 overflow-auto">

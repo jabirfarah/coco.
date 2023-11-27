@@ -9,7 +9,6 @@ export default function GithubTrending() {
             const options = {
                 method: "GET",
                 headers: {
-                  
                 }
             };
 
@@ -35,10 +34,10 @@ export default function GithubTrending() {
     return (
         <>
             <section id="github-trending" className="h-full w-full border-r bg-white mb-2 shadow-xl flex flex-col flex-shrink-0 max-w-md snap-center">
-                <div className="border">
+                <div className="border-b">
                     <header className="flex items-center align-middle my-1 mr-2 text-sm">
                         <img className="w-5 h-5 mr-2 mx-2 " alt="Github Logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F09%2FGitHub_logo.png&f=1&nofb=1&ipt=5a928c5b1d40a1ba106a7c6eb942a341380e22a477e0540da0468b8c03f85ae8&ipo=images"/>
-                        <h1 className="text-[17px]"> <a target="_blank" rel="noreferrer" href="https://github.com/trending?since=monthly&spoken_language_code=">Github Trending</a> </h1>
+                        <h2 className="text-[17px]"> <a target="_blank" rel="noreferrer" href="https://github.com/trending?since=monthly&spoken_language_code=">Github Trending</a> </h2>
                     </header>
                 </div>
                 <div className="flex-1 overflow-auto">

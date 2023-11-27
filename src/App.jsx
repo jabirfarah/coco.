@@ -5,9 +5,9 @@ import {Dialog, Transition} from "@headlessui/react";
 import GithubTrending from "./api/githubTrending.jsx";
 
 function App() {
-    //Getting today's date
     const [isAnyFeedAdded, setIsAnyFeedAdded] = useState(false);
-
+    
+    //Getting today's date
     const today = new Date();
     let date = `
     ${today.toLocaleDateString('en-EN', { weekday: 'short' })}, 
@@ -17,14 +17,11 @@ function App() {
     `;
 
     let [isOpen, setIsOpen] = useState(false);
-
     let [hnIsAdded, setHNIsAdded] = useState(false);
     let [phIsAdded, setPHIsAdded] = useState(false);
     let [ghIsAdded, setGHIsAdded] = useState(false);
-
     const [feed, setFeed] = useState(getFromLocalStorage());
     let [i, setI] = useState(0);
-
 
     function getFromLocalStorage() {
         const storedData = localStorage.getItem('feed');
@@ -51,6 +48,7 @@ function App() {
         }
 
     }
+
     useEffect(() => {
         // Check if feed is already added
         if (feed.some(feed => feed.type === "hackernews")) {
@@ -129,19 +127,18 @@ function App() {
     return (
     <>
         <div className="h-screen flex flex-col font-nunito">
-                    <nav className="border-b-2 flex justify-between items-center px-4 pe-2 space-x-3">
+                    <nav className="border-b flex justify-between items-center px-4 pe-2 space-x-3s">
                         <h1 className='text-3xl font-bold'>Coco.</h1>
-
+                        <div className='flex-grow'></div>
                         <div className="flex gap-4 items-center">
                             <div className="text-xs pt-1 text-gray-500">{date}</div>
                             <div className="inset-0 flex items-center justify-center">
                                 <button
                                     type="button"
                                     onClick={openModal}
-                                    className="rounded-md bg-black bg-opacity-20 px-2 py-1 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                                    className="text-sm rounded-sm bg-opacity-20 px-0.5  py-1 font-medium text-gray-500 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
                                 >
-                                    ⊕
-                                </button>
+                                    <svg width="16px" height="16px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M8 12H12M16 12H12M12 12V8M12 12V16" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>                                </button>
                             </div>
 
                             <Transition appear show={isOpen} as={Fragment}>
@@ -158,7 +155,7 @@ function App() {
                                         <div className="fixed inset-0 bg-black bg-opacity-25" />
                                     </Transition.Child>
 
-                                    <div className="fixed inset-0 overflow-y-auto">
+                                    <div className="fixed inset-0 overflow-y-auto font-nunito">
                                         <div className="flex min-h-full items-center justify-center p-4 text-center">
                                             <Transition.Child
                                                 as={Fragment}
@@ -192,7 +189,7 @@ function App() {
                                                                 </div>
                                                                 <div>
                                                                     <div className="text-xl">Hacker News</div>
-                                                                    <div className="text-sm text-gray-400">Top Stories of the day</div>
+                                                                    <div className="text-sm text-gray-400">Top stories of the day</div>
                                                                     {hnIsAdded ? <button id="HN" onClick={removeHNFeed}>Remove</button> : <button onClick={toggleHNFeed}>Add</button>}
 
                                                                 </div>
@@ -234,8 +231,9 @@ function App() {
                     </nav>
 
             {isAnyFeedAdded ? 
-            //If feed already exists
-            <div className="flex flex-grow overflow-x-auto snap-x snap-mandatory">
+            //If feed already exists, show the feed
+            <>
+            <div className="flex flex-grow overflow-x-auto snap-x snap-mandatory h-full bg-white">
                 {feed.map((item) => {
                     if (item.type === 'hackernews') {
                         return <HackerNews key={item.id} />;
@@ -246,7 +244,10 @@ function App() {
                     }
                     return null;
                 })}
-            </div> :
+            </div>
+            <div className='fixed flex flex-col justify-end z-[55] bottom-0 end-0 w-full sm:w-96'></div>
+            </>
+            :
             //If there is no Feed 
             <div className='flex flex-col justify-center items-center h-full text-center'>
                 
