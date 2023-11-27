@@ -45,8 +45,8 @@ export default function GithubTrending() {
                         <div  className="flex gap-2 hover:bg-gray-50 justify-between p-2">
                             <div className="flex flex-row">
                             <div>
-                                <h1 className="font-bold"><a target="_blank" rel="noreferrer" href={repo.url}>{`${repo.author} / ${repo.name}`}</a></h1>
-                                <p className="text-sm text-gray-500">{repo.description}</p>
+                                <h1 className="font-medium text-sm"><a target="_blank" rel="noreferrer" href={repo.url}>{`${repo.author} / ${repo.name}`}</a></h1>
+                                <p className="text-xs text-gray-500">{repo.description}</p>
                             </div>
                             </div>
                             <div className="border rounded-md flex flex-col w-10 h-12 items-center text-xs justify-end pb-1 flex-shrink-0 px-6">

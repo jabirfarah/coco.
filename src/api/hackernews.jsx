@@ -76,7 +76,7 @@ const getReadableDate = (d) => {
                   <a key={post.id} href={post.url}>
                     <div key={post.id} className="hover:bg-gray-50 py-2 px-1.5">
                         <div className="">
-                            <div className="text">{post.title}</div>
+                            <div className="font-medium text-sm">{post.title}</div>
                             {<p className="text-xs text-gray-400 pt-0.5 px-3 flex gap-1">
                                 <span className="text-orange-600">
                                     {`• ${post.score} points`}

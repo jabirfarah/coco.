@@ -126,8 +126,8 @@ function App() {
 
     return (
     <>
-        <div className="h-screen flex flex-col font-nunito">
-                    <nav className="border-b flex justify-between items-center px-4 pe-2 space-x-3s">
+        <div className="h-screen flex flex-col font-nunito overflow-x-auto">
+                    <nav className="border-b flex justify-between items-center px-4 pe-2 space-x-3s overflow-hidden">
                         <h1 className='text-3xl font-bold'>Coco.</h1>
                         <div className='flex-grow'></div>
                         <div className="flex gap-4 items-center">

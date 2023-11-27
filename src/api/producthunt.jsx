@@ -52,15 +52,15 @@ const ProductHunt = () => {
             {productHuntItems.map((post) =>
                 <a key={post.id} className="flex gap-2 hover:bg-gray-50 justify-between p-2" href={post.url}>
                     <div className="flex gap-2">
-                        <img className=" h-12 w-12 rounded-lg mt-2" src={post.thumbnail.url} alt={post.name} border="1px solid black" />
+                        <img className=" h-12 w-12 rounded-lg " src={post.thumbnail.url} alt={post.name} border="1px solid black" />
                         <div>
-                            <h1 className="font-bold "> <a target="_blank" rel="noreferrer" href={post.url}>{post.name}</a> </h1>
-                            <p className="text-gray-500">{post.tagline}</p>
+                            <h1 className="font-medium text-gray-900 text-sm "> <a target="_blank" rel="noreferrer" href={post.url}>{post.name}</a> </h1>
+                            <p className="text-xs text-gray-500">{post.tagline}</p>
                         </div>
                     </div>
                     <div className="border flex flex-col w-10 h-12 items-center text-xs justify-end pb-1 flex-shrink-0">
                         <svg className="mb-1" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><path d="M182.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/></svg>
-                        <h1>{post.votesCount}</h1>
+                        <h1 className="">{post.votesCount}</h1>
                     </div>
                 </a>
             )}
