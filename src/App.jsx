@@ -39,11 +39,9 @@ function App() {
     function checkifFeedisEmpty() {
         if (feed.length == 0) {
             setIsAnyFeedAdded(false)
-            console.log("is any feed is set to (should be false): " + isAnyFeedAdded)
-            console.log(feed.length)
+
         } else {
             setIsAnyFeedAdded(true)
-            console.log("is any feed is set to (should be true): " + isAnyFeedAdded)
 
         }
 
@@ -84,8 +82,7 @@ function App() {
         const newFeedItem = { id: i, type: 'producthunt', value: 'ProductHunt'};
         setFeed([...feed, newFeedItem]);
         setI(i + 1);
-        setHNIsAdded(true);
-        checkifFeedisEmpty()
+        checkifFeedisEmpty();
     }
 
 

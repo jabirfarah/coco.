@@ -2,7 +2,7 @@
 
 A modern tech news aggregator built right into the web. 
 
-![Image description](src/assets/Coco-screenshot.png)
+![Coco screenshot](src/assets/Coco-screenshot.png)
 
 
 Built using:
